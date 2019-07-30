@@ -42,8 +42,9 @@ public class Consulter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String type = req.getParameter("t");
-        if (type == null) {
-            type = "";
+        if (type == null) {            
+            resp.sendRedirect(sc.getContextPath() +"/index.html");
+            return;
         }
         resp.setContentType("text/html");
         PrintWriter p = resp.getWriter();
