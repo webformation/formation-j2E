@@ -8,6 +8,14 @@
         <servlet-name>Emprunter</servlet-name>
         <servlet-class>devweb.meadiathequeweb.Emprunter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Authentifier</servlet-name>
+        <servlet-class>devweb.meadiathequeweb.Authentifier</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Authentifier</servlet-name>
+        <url-pattern>/Authentifier</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Consulter</servlet-name>
         <url-pattern>/Consulter</url-pattern>

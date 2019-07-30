@@ -7,6 +7,8 @@ package devweb.meadiathequeweb;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -19,7 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Administrateur
  */
-public class Emprunter extends HttpServlet {
+public class Authentifier extends HttpServlet {
+
     ServletContext sc;
 
     @Override
@@ -27,8 +30,7 @@ public class Emprunter extends HttpServlet {
         super.init(config);
         sc = config.getServletContext();
     }
-    
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -41,25 +43,26 @@ public class Emprunter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.sendRedirect(sc.getContextPath() + "/connexion.html");
+        return;
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String id = (String) session.getAttribute("id");
-        if (id == null) {
+        String idSaisi = request.getParameter("identifiant");
+        String mdpSaisi = request.getParameter("mdp");
+        if (idSaisi != null && mdpSaisi != null) {
+            // TODO : faire un controle de validité
+            session.setAttribute("id", idSaisi);
+            response.sendRedirect(sc.getContextPath() + "/Emprunter");
+            return;
+        } else {
             response.sendRedirect(sc.getContextPath() + "/connexion.html");
             return;
         }
-        response.setContentType("text/html");
-        PrintWriter p = response.getWriter();
-         p.println("<!DOCTYPE html>");
-        p.println("<html>");
-        p.println("<head>");
-        p.println("<title>Emprunter</title>");
-        p.println("</head>");
-        p.println("<body>");
-         p.println("<h1 style='text-align:center'>Emprunts</h1>");
-                p.println("</body>");
-        p.println("</html>");
     }
-
 
     /**
      * Returns a short description of the servlet.
