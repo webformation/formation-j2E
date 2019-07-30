@@ -42,8 +42,8 @@ public class Consulter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String type = req.getParameter("t");
-        if (type == null) {            
-            resp.sendRedirect(sc.getContextPath() +"/index.html");
+        if (type == null) {
+            resp.sendRedirect(sc.getContextPath() + "/index.html");
             return;
         }
         resp.setContentType("text/html");
@@ -54,6 +54,8 @@ public class Consulter extends HttpServlet {
         p.println("<title>Catalogue</title>");
         p.println("</head>");
         p.println("<body>");
+        sc.getRequestDispatcher("/menu.html").include(req, resp);
+        p.println("<br>");
         StringBuilder sb = new StringBuilder("<table>");
         for (Media x : catalogue) {
             if (type.equals("l") && !(x instanceof Livre)) {
@@ -73,7 +75,7 @@ public class Consulter extends HttpServlet {
         }
         sb.append("</table>");
         p.println(sb.toString());
-
+        sc.getRequestDispatcher("/pied.html").include(req, resp);
         p.println("</body>");
         p.println("</html>");
     }
