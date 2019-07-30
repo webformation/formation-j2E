@@ -5,7 +5,6 @@ package devweb.meadiathequeweb;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import devweb.meadiathequeweb.Media;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,13 +26,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author Administrateur
  */
 public class Consulter extends HttpServlet {
-ArrayList<Media> catalogue;
-ServletContext sc;
 
+    ArrayList<Media> catalogue;
+    ServletContext sc;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        super.init(config); 
+        super.init(config);
         catalogue = new ArrayList<>();
         Importe();
         sc = config.getServletContext();
@@ -43,14 +42,39 @@ ServletContext sc;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String type = req.getParameter("t");
-        if (type == null) type="";
+        if (type == null) {
+            type = "";
+        }
         resp.setContentType("text/html");
         PrintWriter p = resp.getWriter();
-        for (Media x: catalogue) {
-            if (type.equals("l") && ! (x instanceof Livre))  continue;
-            if (type.equals("d") && ! (x instanceof DVD))  continue;
-            p.println(x + "<br>");
+        p.println("<!DOCTYPE html>");
+        p.println("<html>");
+        p.println("<head>");
+        p.println("<title>Catalogue</title>");
+        p.println("</head>");
+        p.println("<body>");
+        StringBuilder sb = new StringBuilder("<table>");
+        for (Media x : catalogue) {
+            if (type.equals("l") && !(x instanceof Livre)) {
+                continue;
+            }
+            if (type.equals("d") && !(x instanceof DVD)) {
+                continue;
+            }
+            sb.append("<tr>");
+            sb.append("<td>");
+            sb.append(x.getTitre());
+            sb.append("</td>");
+            sb.append("<td>");
+            sb.append(x.getAuteur());
+            sb.append("</td>");
+            sb.append("</tr>");
         }
+        sb.append("</table>");
+        p.println(sb.toString());
+
+        p.println("</body>");
+        p.println("</html>");
     }
 
     public void Importe() {
@@ -92,5 +116,5 @@ ServletContext sc;
             Logger.getLogger(Consulter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
