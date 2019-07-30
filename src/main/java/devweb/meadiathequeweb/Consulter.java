@@ -16,6 +16,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Consulter extends HttpServlet {
 ArrayList<Media> catalogue;
+ServletContext sc;
 
 
     @Override
@@ -34,13 +36,19 @@ ArrayList<Media> catalogue;
         super.init(config); 
         catalogue = new ArrayList<>();
         Importe();
+        sc = config.getServletContext();
+        sc.log("Catalogue importe");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String type = req.getParameter("t");
+        if (type == null) type="";
         resp.setContentType("text/html");
         PrintWriter p = resp.getWriter();
         for (Media x: catalogue) {
+            if (type.equals("l") && ! (x instanceof Livre))  continue;
+            if (type.equals("d") && ! (x instanceof DVD))  continue;
             p.println(x + "<br>");
         }
     }
