@@ -43,7 +43,7 @@ public class Consulter extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String type = req.getParameter("t");
         if (type == null) {
-            resp.sendRedirect(sc.getContextPath() + "/index.html");
+            resp.sendRedirect(sc.getContextPath() + "/index.jsp");
             return;
         }
         resp.setContentType("text/html");
@@ -54,7 +54,7 @@ public class Consulter extends HttpServlet {
         p.println("<title>Catalogue</title>");
         p.println("</head>");
         p.println("<body>");
-        sc.getRequestDispatcher("/menu.html").include(req, resp);
+        sc.getRequestDispatcher("/menu.jsp").include(req, resp);
         p.println("<br>");
         StringBuilder sb = new StringBuilder("<table>");
         for (Media x : catalogue) {

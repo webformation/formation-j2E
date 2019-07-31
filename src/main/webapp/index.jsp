@@ -26,7 +26,7 @@
     </head>
     <body>
         <h1>Bienvenue à la Médiatheque</h1>
-        <%@include file="menu.html" %>  
+        <%@include file="menu.jsp" %>  
         <%@include file="pied.html" %>    
     </body>
 </html>

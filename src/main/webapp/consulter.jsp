@@ -19,7 +19,7 @@
         <title>Consutlation</title>
     </head>
     <body>
-        <%@include file="menu.html" %>
+        <%@include file="menu.jsp" %>
         <h1>Catalogue</h1>
         <table>
             <%
