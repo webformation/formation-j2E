@@ -26,13 +26,8 @@
     </head>
     <body>
         <h1>Bienvenue à la Médiatheque</h1>
-        <nav>
-            <a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?t=l">Consulter les livres</a>
-            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?t=d">Consulter les DVD</a>
-            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?=f">Consulter les Films</a>
-            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Emprunter">Emprunter</a>
-        </nav>
-        
+        <%@include file="menu.html" %>  
+        <%@include file="pied.html" %>    
     </body>
 </html>
 
