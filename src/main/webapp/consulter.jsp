@@ -24,6 +24,8 @@
         <table>
             <%
                 String type = request.getParameter("t");
+                if (type == null) type="t";
+                
                 for (Media x : catalogue) {
                     if (type.equals("l") && (x instanceof Livre)) {
                         Livre l = (Livre) x;
