@@ -27,11 +27,12 @@
     <body>
         <h1>Bienvenue à la Médiatheque</h1>
         <nav>
-            <a href="/mediatheque/Consulter?t=l">Consulter les livres</a>
-            &nbsp;<a href="/mediatheque/Consulter?t=d">Consulter les DVD</a>
-            &nbsp;<a href="/mediatheque/Consulter?=f">Consulter les Films</a>
-            &nbsp;<a href="/mediatheque/Emprunter">Emprunter</a>
+            <a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?t=l">Consulter les livres</a>
+            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?t=d">Consulter les DVD</a>
+            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Consulter?=f">Consulter les Films</a>
+            &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath() %>/Emprunter">Emprunter</a>
         </nav>
+        
     </body>
 </html>
 
