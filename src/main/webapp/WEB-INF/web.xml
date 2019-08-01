@@ -12,6 +12,10 @@
         <servlet-name>Authentifier</servlet-name>
         <servlet-class>devweb.meadiathequeweb.Authentifier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FiltrerCatalogue</servlet-name>
+        <servlet-class>devweb.meadiathequeweb.FiltrerCatalogue</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentifier</servlet-name>
         <url-pattern>/Authentifier</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Emprunter</servlet-name>
         <url-pattern>/Emprunter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FiltrerCatalogue</servlet-name>
+        <url-pattern>/filtrerCatalogue</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

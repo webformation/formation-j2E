@@ -38,6 +38,11 @@ public class Recherche {
     private String auteur="";
     private String type="";
     private String titre="";
+
+    @Override
+    public String toString() {
+        return "Recherche{" + "auteur=" + auteur + ", type=" + type + ", titre=" + titre + '}';
+    }
  
 
 }
