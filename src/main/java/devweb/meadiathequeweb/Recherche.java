@@ -35,9 +35,9 @@ public class Recherche {
         this.titre = titre;
     }
     
-    private String auteur;
-    private String type;
-    private String titre;
-
+    private String auteur="";
+    private String type="";
+    private String titre="";
+ 
 
 }
