@@ -24,13 +24,25 @@
         <jsp:useBean id="MaRecherche" scope="session" class="devweb.meadiathequeweb.Recherche" />     
         <jsp:setProperty name="MaRecherche" property="auteur" param="auteur" />
         <jsp:setProperty name="MaRecherche" property="titre" param="titre" />  
-        <jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre") %>' />    
-       <jsp:setProperty name="MaRecherche" property="type" param="type" /> 
-        
+        <jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre")%>' />    
+        <jsp:setProperty name="MaRecherche" property="type" param="type" /> 
+
         <h1>Resultats de la recherche</h1>
         <jsp:include   page="/filtrerCatalogue" />
-    <c:forEach var="" items="">
-    </c:forEach>
+        <table>
+        <c:forEach var="x" items="${sessionScope.resultat}">
+            <tr><td>${x.titre}</td><td> ${x.getAuteur()}</td>
+        </c:forEach>
+        </table>
+        <%--
+            ArrayList<Media> liste = (ArrayList<Media>) session.getAttribute("resultat");
+            if (liste != null) {
+                for (Media x : liste) {
+                    out.println(x.getTitre());
+
+                }
+            }
+        --%>
         <form action="rechercher.jsp" method="post">           
             <input type="submit" value="Effectuer une nouvelle recherche">
         </form>

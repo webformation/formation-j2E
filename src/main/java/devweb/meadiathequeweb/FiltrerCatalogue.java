@@ -45,8 +45,9 @@ public class FiltrerCatalogue extends HttpServlet {
                 ResultatRecherche.add(x);
             }
         } 
-
-        request.setAttribute("resulat", r);
+        PrintWriter out = response.getWriter();
+        //for (Media x: ResultatRecherche ) out.println(x.getTitre());
+        request.getSession().setAttribute("resultat", ResultatRecherche);
  /*      Stream s;
        s = Arrays.stream(catalogue.toArray());
        s = s.filter(new Predicate<Media>() {
