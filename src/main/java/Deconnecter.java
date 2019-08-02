@@ -1,32 +1,37 @@
-package devweb.meadiathequeweb;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Administrateur
  */
-public class Emprunter extends HttpServlet {
+@WebServlet(urlPatterns = {"/Deconnecter"})
+public class Deconnecter extends HttpServlet {
 
-    ServletContext sc;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        sc = config.getServletContext();
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getSession().invalidate();
+        getServletContext().getRequestDispatcher("/").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -41,24 +46,21 @@ public class Emprunter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String id = (String) session.getAttribute("id");
-        if (id == null) {
-            response.sendRedirect(sc.getContextPath() + "/connexion.html");
-            return;
-        }
-        response.setContentType("text/html");
-        PrintWriter p = response.getWriter();
-        p.println("<!DOCTYPE html>");
-        p.println("<html>");
-        p.println("<head>");
-        sc.getRequestDispatcher("/menu.jsp").include(request, response);
-        p.println("<title>Emprunter</title>");
-        p.println("</head>");
-        p.println("<body>");
-        p.println("<h1 style='text-align:center'>Emprunts</h1>");
-        p.println("</body>");
-        p.println("</html>");
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
