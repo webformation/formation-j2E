@@ -5,7 +5,6 @@ package devweb.meadiathequeweb;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -34,30 +33,31 @@ public class FiltrerCatalogue extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Recherche r = (Recherche)request.getSession().getAttribute("MaRecherche");
-        ArrayList<Media> catalogue =  Catalogue.get();
-        
+
+        Recherche r = (Recherche) request.getSession().getAttribute("MaRecherche");
+                
+        ArrayList<Media> ResultatRecherche = Catalogue.get();; 
         // nom auteur
-        ArrayList<Media> ResultatRecherche = new ArrayList<Media>();
-        for (Media x: catalogue) {
-            if (x.getAuteur().equals(r.getAuteur())) {
-                ResultatRecherche.add(x);
+        if (r.getAuteur().trim().length() != 0) {
+            ArrayList<Media> c =  new ArrayList<Media>();
+            for (Media x : ResultatRecherche) {
+                if (x.getAuteur().equalsIgnoreCase(r.getAuteur())) {
+                    c.add(x);
+                }
             }
-        } 
-        PrintWriter out = response.getWriter();
-        //for (Media x: ResultatRecherche ) out.println(x.getTitre());
+            ResultatRecherche = c;
+        }
+       // nom titre
+        if (r.getTitre().trim().length() != 0) {
+            ArrayList<Media> c =  new ArrayList<Media>();
+            for (Media x : ResultatRecherche) {
+                if (x.getTitre().equalsIgnoreCase(r.getTitre())) {
+                    c.add(x);
+                }
+            }
+            ResultatRecherche = c;
+        }
         request.getSession().setAttribute("resultat", ResultatRecherche);
- /*      Stream s;
-       s = Arrays.stream(catalogue.toArray());
-       s = s.filter(new Predicate<Media>() {
-           @Override
-           public boolean Test(Media m) {
-               return m.equals(r.getAuteur());
-           }
-       });  */
-       //s = s.filter(p -> ((Media)p).getAuteur().equals(r.getAuteur()));
-       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

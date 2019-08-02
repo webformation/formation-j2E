@@ -22,9 +22,10 @@
     <body>
         <%@include file="menu.jsp" %>
         <jsp:useBean id="MaRecherche" scope="session" class="devweb.meadiathequeweb.Recherche" />     
-        <jsp:setProperty name="MaRecherche" property="auteur" param="auteur" />
-        <jsp:setProperty name="MaRecherche" property="titre" param="titre" />  
-        <jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre")%>' />    
+        <%--<jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre")%>' />        <jsp:setProperty name="MaRecherche" property="auteur" param="auteur" />
+        <jsp:setProperty name="MaRecherche" property="titre" param="titre" />--%>  
+        <jsp:setProperty name="MaRecherche" property="titre" value='<%= request.getParameter("titre")%>' />
+        <jsp:setProperty name="MaRecherche" property="auteur" value='<%= request.getParameter("auteur")%>' />
         <jsp:setProperty name="MaRecherche" property="type" param="type" /> 
 
         <h1>Resultats de la recherche</h1>
