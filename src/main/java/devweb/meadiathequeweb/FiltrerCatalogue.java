@@ -36,7 +36,7 @@ public class FiltrerCatalogue extends HttpServlet {
 
         Recherche r = (Recherche) request.getSession().getAttribute("MaRecherche");
                 
-        ArrayList<Media> ResultatRecherche = Catalogue.get();; 
+        ArrayList<Media> ResultatRecherche = Catalogue.get(getServletContext().getRealPath("/data/export.csv"));; 
         // nom auteur
         if (r.getAuteur().trim().length() != 0) {
             ArrayList<Media> c =  new ArrayList<Media>();

@@ -21,18 +21,18 @@ public class Catalogue {
 
     static private ArrayList<Media> c;
 
-    static public ArrayList<Media> get() {
+    static public ArrayList<Media> get(String nomFichier) {
         if (c == null) {
             c =new ArrayList<Media>();
-            Importe();
+            Importe(nomFichier);
         }
 
         return c;
     }
 
-    static public void Importe() {
+    static public void Importe(String nomFichier) {
         try {
-            FileInputStream f = new FileInputStream("./data/export.csv");
+            FileInputStream f = new FileInputStream(nomFichier);
             Scanner sc = new Scanner(f);
             String ligne;
             while (sc.hasNextLine()) {

@@ -10,7 +10,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="devweb.meadiathequeweb.Media"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! ArrayList<Media> catalogue = Catalogue.get();%>
+<%! 
+    ArrayList<Media> catalogue; 
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +25,7 @@
         <h1>Catalogue</h1>
         <table>
             <%
+                catalogue = Catalogue.get(application.getRealPath("/data/export.csv"));
                 String type = request.getParameter("t");
                 if (type == null) type="t";
                 

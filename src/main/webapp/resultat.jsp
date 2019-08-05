@@ -11,8 +11,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="devweb.meadiathequeweb.Media"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! ArrayList<Media> catalogue = Catalogue.get();%>
-
+<%! ArrayList<Media> catalogue;%>
+<%
+    catalogue = Catalogue.get(application.getRealPath("/data/export.csv"));
+%>
 <!DOCTYPE html>
 <html>
     <head>
