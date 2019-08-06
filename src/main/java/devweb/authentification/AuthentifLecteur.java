@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentification;
+package devweb.authentification;
 
-import basedonnee.ManagerBase;
+import devweb.basedonnee.ManagerBase;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
