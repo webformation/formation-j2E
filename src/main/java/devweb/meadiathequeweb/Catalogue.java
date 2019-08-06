@@ -34,6 +34,7 @@ public class Catalogue {
         return c;
     }
     
+  
     static public void Importe(String nomFichier) {
         try {
             FileInputStream f = new FileInputStream(nomFichier);
@@ -86,5 +87,18 @@ public class Catalogue {
         } catch (SQLException ex) {
             Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+     static public ArrayList<Media> get() {
+        if (c == null) {
+            c = new ArrayList<Media>();
+            ImporteBDD();
+        }
+        
+        return c;
+    }
+     
+    static public void ImporteBDD() {
+        c = Livre.getAll();
+        c.addAll(DVD.getAll());
     }
 }

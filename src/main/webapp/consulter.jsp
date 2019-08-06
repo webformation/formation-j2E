@@ -25,7 +25,7 @@
         <h1>Catalogue</h1>
         <table>
             <%
-                catalogue = Catalogue.get(application.getRealPath("/data/export.csv"));
+                catalogue = Catalogue.get();
                 String type = request.getParameter("t");
                 if (type == null) type="t";
                 

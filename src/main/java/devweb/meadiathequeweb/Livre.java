@@ -4,7 +4,15 @@
  */
 package devweb.meadiathequeweb;
 
+import devweb.basedonnee.ManagerBase;
 import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,6 +102,27 @@ public class Livre extends Media {
         sb.append(nbPage);
         sb.append("')");
         return sb.toString();
+    }
+    
+    public static ArrayList<Media> getAll() {
+        ArrayList<Media> catalogue = new ArrayList<>();
+        try {
+            Connection c = ManagerBase.getManagerBase().getConnection();
+            Statement st = c.createStatement();
+            String req = "select titre, auteur, nbpage from livre";
+            ResultSet res = st.executeQuery(req);
+            while (res.next()) {
+                try {
+                    Livre l = new Livre(res.getString("titre"), res.getString("auteur"),res.getInt("nbpage"));
+                    catalogue.add(l)
+;                } catch (Exception ex) {
+                    Logger.getLogger(Livre.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Livre.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return catalogue;
     }
 
 }

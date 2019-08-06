@@ -4,6 +4,7 @@
 package devweb.meadiathequeweb;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -108,4 +109,5 @@ abstract public class Media {
     public abstract void enregistre(PrintStream p); 
     
     public abstract String getRequete();
+
 }
