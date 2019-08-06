@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import authentification.AuthentifLecteur;
 
 /**
  *
@@ -55,13 +56,14 @@ public class Authentifier extends HttpServlet {
         String mdpSaisi = request.getParameter("mdp");
         if (idSaisi != null && mdpSaisi != null) {
             // TODO : faire un controle de validité
-            session.setAttribute("id", idSaisi);
-            response.sendRedirect(sc.getContextPath() + "/Emprunter");
-            return;
-        } else {
-            response.sendRedirect(sc.getContextPath() + "/connexion.html");
-            return;
+            if (AuthentifLecteur.isLecteur(idSaisi, mdpSaisi)) {
+                session.setAttribute("id", idSaisi);
+                response.sendRedirect(sc.getContextPath() + "/Emprunter");
+                return;
+            }
         }
+        response.sendRedirect(sc.getContextPath() + "/connexion.html");
+        return;
     }
 
     /**
