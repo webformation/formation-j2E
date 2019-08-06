@@ -34,10 +34,10 @@ abstract public class Media {
      * @param Titre new value of Titre
      */
     public void setTitre(String Titre) throws Exception {
-                if (Titre == null || Titre.strip().length() == 0) {
+                if (Titre == null || Titre.trim().length() == 0) {
             throw new Exception("Le titre est vide");
         }
-        this.Titre = Titre.strip();
+        this.Titre = Titre.trim();
     }
 
     private String Auteur;
@@ -57,10 +57,10 @@ abstract public class Media {
      * @param Auteur new value of Auteur
      */
     public void setAuteur(String Auteur) throws Exception {
-        if (Auteur == null || Auteur.strip().length() == 0) {
+        if (Auteur == null || Auteur.trim().length() == 0) {
             throw new Exception("L'auteur est vide");
         }
-        this.Auteur = Auteur.strip();
+        this.Auteur = Auteur.trim();
     }
 
     public Media(String Titre, String Auteur) throws Exception {

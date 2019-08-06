@@ -51,10 +51,10 @@ public class Catalogue {
                     Media m;
                     switch (e[0]) {
                         case "D":
-                            m = new DVD(e[1], e[2], Integer.parseInt(e[3].strip()));
+                            m = new DVD(e[1], e[2], Integer.parseInt(e[3].trim()));
                             break;
                         case "L":
-                            m = new Livre(e[1], e[2], Integer.parseInt(e[3].strip()));
+                            m = new Livre(e[1], e[2], Integer.parseInt(e[3].trim()));
                             break;
                         default:
                             continue;
