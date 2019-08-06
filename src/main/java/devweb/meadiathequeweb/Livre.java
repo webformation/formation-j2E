@@ -13,10 +13,9 @@ import java.io.PrintStream;
 /*
  * 
  */
-
 public class Livre extends Media {
 
-private int nbPage;
+    private int nbPage;
 
     public Livre(String Titre, String Auteur, int nbPage) throws Exception {
         super(Titre, Auteur);
@@ -65,9 +64,10 @@ private int nbPage;
         }
         return super.equals(obj);
     }
-        @Override
+
+    @Override
     public String toString() {
-        return super.toString() +" : Livre{" +  "nbPage=" + nbPage + '}';
+        return super.toString() + " : Livre{" + "nbPage=" + nbPage + '}';
     }
 
     @Override
@@ -81,5 +81,19 @@ private int nbPage;
         sb.append(nbPage);
         p.println(sb.toString());
     }
-    
+
+    @Override
+    public String getRequete() {
+        // @todo  mettre le nom de la table en paramtere
+        StringBuilder sb = new StringBuilder("INSERT into livre (auteur, titre, nbpage)");
+        sb.append(" values ('");
+        sb.append(getAuteur());
+        sb.append("','");
+        sb.append(getTitre());
+        sb.append("','");
+        sb.append(nbPage);
+        sb.append("')");
+        return sb.toString();
+    }
+
 }

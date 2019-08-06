@@ -5,9 +5,13 @@
  */
 package devweb.meadiathequeweb;
 
+import devweb.basedonnee.ManagerBase;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -18,18 +22,18 @@ import java.util.logging.Logger;
  * @author Administrateur
  */
 public class Catalogue {
-
+    
     static private ArrayList<Media> c;
-
+    
     static public ArrayList<Media> get(String nomFichier) {
         if (c == null) {
-            c =new ArrayList<Media>();
+            c = new ArrayList<Media>();
             Importe(nomFichier);
         }
-
+        
         return c;
     }
-
+    
     static public void Importe(String nomFichier) {
         try {
             FileInputStream f = new FileInputStream(nomFichier);
@@ -41,7 +45,7 @@ public class Catalogue {
                 if (e.length == 0) {
                     continue;
                 }
-
+                
                 try {
                     Media m;
                     switch (e[0]) {
@@ -62,10 +66,24 @@ public class Catalogue {
                 }
             }
             f.close();
-
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    static public void exporteBDD(ArrayList<Media> catalogue) {
+        Connection c = ManagerBase.getManagerBase().getConnection();
+        try {          
+            for (Media m : catalogue) {
+                Statement stmt = c.createStatement();
+                String requete = m.getRequete();
+                stmt.executeUpdate(requete);
+                stmt.close();
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

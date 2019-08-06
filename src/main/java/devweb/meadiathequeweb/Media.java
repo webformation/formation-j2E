@@ -106,4 +106,6 @@ abstract public class Media {
     }
  
     public abstract void enregistre(PrintStream p); 
+    
+    public abstract String getRequete();
 }

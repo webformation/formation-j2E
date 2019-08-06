@@ -76,4 +76,18 @@ public class DVD extends Media {
         sb.append(duree);
         p.println(sb.toString());
     }
+    
+        @Override
+    public String getRequete() {
+        // @todo  mettre le nom de la table en paramtere
+        StringBuilder sb = new StringBuilder("INSERT into DVD (auteur, titre, duree)");
+        sb.append(" values ('");
+        sb.append(getAuteur());
+        sb.append("','");
+        sb.append(getTitre());
+        sb.append("','");
+        sb.append(duree);
+        sb.append("')");
+        return sb.toString();
+    }
 }

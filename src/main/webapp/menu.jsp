@@ -5,4 +5,5 @@
     &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath()%>/rechercher.jsp">Rechercher</a>
     &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath()%>/Emprunter">Emprunter</a>
     &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath()%>/Deconnecter">Déconnexion</a>
+    &nbsp;<a href="<%= getServletConfig().getServletContext().getContextPath()%>/admin.jsp">Gérer</a>
 </nav>
