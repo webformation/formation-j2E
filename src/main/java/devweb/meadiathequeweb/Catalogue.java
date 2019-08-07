@@ -28,14 +28,14 @@ public class Catalogue {
     static public ArrayList<Media> get(String nomFichier) {
         if (c == null) {
             c = new ArrayList<Media>();
-            Importe(nomFichier);
+            ImporteCSV(nomFichier);
         }
         
         return c;
     }
     
   
-    static public void Importe(String nomFichier) {
+    static public void ImporteCSV(String nomFichier) {
         try {
             FileInputStream f = new FileInputStream(nomFichier);
             Scanner sc = new Scanner(f);
@@ -91,13 +91,13 @@ public class Catalogue {
      static public ArrayList<Media> get() {
         if (c == null) {
             c = new ArrayList<Media>();
-            ImporteBDD();
+            LireBDD();
         }
         
         return c;
     }
      
-    static public void ImporteBDD() {
+    static public void LireBDD() {
         c = Livre.getAll();
         c.addAll(DVD.getAll());
     }
