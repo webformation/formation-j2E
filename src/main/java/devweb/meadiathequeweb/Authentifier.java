@@ -44,7 +44,7 @@ public class Authentifier extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect(sc.getContextPath() + "/connexion.html");
+        response.sendRedirect(sc.getContextPath() + "/connexion.jsp");
         return;
     }
 
@@ -61,7 +61,7 @@ public class Authentifier extends HttpServlet {
                 return;
             }
         }
-        response.sendRedirect(sc.getContextPath() + "/connexion.html");
+        response.sendRedirect(sc.getContextPath() + "/connexion.jsp");
     }
 
     /**

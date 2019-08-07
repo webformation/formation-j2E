@@ -1,9 +1,11 @@
+<%-- 
+    Document   : connexion
+    Created on : 7 août 2019, 13:57:27
+    Author     : Administrateur
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -12,7 +14,7 @@ and open the template in the editor.
     </head>
     <body>
         <div style="width: 800px;margin-left:auto; margin-right:auto;font-size:30px">
-            <form method="POST"  action="/mediatheque/Authentifier">
+            <form method="POST"  action="<%= application.getContextPath() %>/Authentifier">
                 <label for="identifiant">Identifiant 
                     <input type="text" name="identifiant" id="identifiant">
                 </label>

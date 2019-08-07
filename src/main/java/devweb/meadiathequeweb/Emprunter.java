@@ -44,7 +44,7 @@ public class Emprunter extends HttpServlet {
         HttpSession session = request.getSession(true);
         String id = (String) session.getAttribute("id");
         if (id == null) {
-            response.sendRedirect(sc.getContextPath() + "/connexion.html");
+            response.sendRedirect(sc.getContextPath() + "/connexion.jsp");
             return;
         }
         response.setContentType("text/html");
