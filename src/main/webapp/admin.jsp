@@ -12,8 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-                <%@include file="menu.jsp" %>
+        <%@include file="menu.jsp" %>
         <h1>Administration</h1>
-        <a href="<%= getServletConfig().getServletContext().getContextPath() %>/ExporterBDD">Créer Base de données</a>
+        <a href="<%= getServletConfig().getServletContext().getContextPath()%>/ExporterBDD">Créer Base de données</a><br>
+        <a href="<%= application.getContextPath()%>/debug.jsp">Voir Media</a>
+
     </body>
 </html>
