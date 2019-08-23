@@ -15,7 +15,8 @@
         <%@include file="menu.jsp" %>
         <h1>Administration</h1>
         <a href="<%= getServletConfig().getServletContext().getContextPath()%>/ExporterBDD">Créer Base de données</a><br>
-        <a href="<%= application.getContextPath()%>/debug.jsp">Voir Media</a>
+        <a href="<%= application.getContextPath()%>/debug.jsp">Voir Media</a><br>
+        <a href="<%= application.getContextPath()%>/listeLecteur">Liste des lecteurs</a>
 
     </body>
 </html>

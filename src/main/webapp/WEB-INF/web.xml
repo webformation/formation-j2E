@@ -16,6 +16,10 @@
         <servlet-name>exporterBDD</servlet-name>
         <servlet-class>devweb.meadiathequeweb.admin.ExporterBDD</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listeLecteur</servlet-name>
+        <servlet-class>devweb.meadiathequeweb.ListeLecteur</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Authentifier</servlet-name>
         <url-pattern>/Authentifier</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>exporterBDD</servlet-name>
         <url-pattern>/ExporterBDD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listeLecteur</servlet-name>
+        <url-pattern>/listeLecteur</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
